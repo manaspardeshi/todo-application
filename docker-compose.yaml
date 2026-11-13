@@ -1,39 +1,28 @@
 services:
   todo-application:
-    image: todo-application-image:latest
-    container_name
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8082:8081"
-    depends_on:
-      mysql-db:
-        condition: service_healthy
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/tododb
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_password: "Root@123"
+    image: manaspardeshi2000/todo-application:latest
+    container_name: todo-application
     networks:
       - todo-network
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/tododb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_password: "Root@123"
+    depends_on:
+      - mysql
 
   mysql-db:
     image: mysql:8.0
     container_name: mysql-db
-    ports:
-      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "Root@123"
       MYSQL_DATABASE: tododb
+    ports:
+      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD","mysqladmin","ping","-h","localhost","-pRoot@123"] 
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    newtorks:
-      - todo-network
 
 newtorks:
   todo-network:
