@@ -1,7 +1,7 @@
 services:
   todo-application:
     image: manaspardeshi2000/todo-application:latest
-    container_name: todo-application
+    container_name: todo-application-1
     ports:
       - "8081:8081"
     environment:
@@ -9,16 +9,25 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: Root@123
     depends_on:
-      - mysql
+      - mysql-db
+    networks:
+      - todo-network  
 
-  mysql:
+  mysql-db:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: mysql-db-1
     environment:
       MYSQL_ROOT_PASSWORD: Root@123
       MYSQL_DATABASE: tododb
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - todo-network  
 
 volumes:
   mysql-data:
+
+networks:
+  todo-network:
+    name: todo-network
+    driver: bridge  
