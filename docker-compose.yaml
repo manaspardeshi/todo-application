@@ -17,8 +17,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: Root@123
       MYSQL_DATABASE: tododb
-    ports:
-      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
 
