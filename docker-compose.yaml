@@ -3,7 +3,7 @@ services:
     image: manaspardeshi2000/todo-application:latest
     container_name: todo-application-1
     ports:
-      - "8081:8081"
+      - "8082:8082"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/tododb
       SPRING_DATASOURCE_USERNAME: root
