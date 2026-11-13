@@ -40,11 +40,11 @@ pipeline {
                         echo "$DOCKERHUB_PASSWORD" | docker login \
                             -u "$DOCKERHUB_USERNAME" --password-stdin
 
-                        docker tag ${DOCKER_IMAGE}.latest \
-                            "$DOCKERHUB_USERNAME/${DOCKERHUB_REPO}:latest"
+                        docker tag todo-application-image:latest \
+                            "$DOCKERHUB_USERNAME/todo-application:latest"
 
                         docker push \
-                            "$DOCKERHUB_USERNAME/${DOCKERHUB_REPO}:latest"
+                            "$DOCKERHUB_USERNAME/todo-application:latest"
 
                         docker logout
                     '''        
