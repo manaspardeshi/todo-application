@@ -2,8 +2,6 @@ services:
   todo-application:
     image: manaspardeshi2000/todo-application:latest
     container_name: todo-application
-    networks:
-      - todo-network
     ports:
       - "8081:8081"
     environment:
@@ -24,11 +22,6 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
 
-newtorks:
-  todo-network:
-    driver: bridge
-
 volumes:
-  mysql-data:
-    name: mysql-data                 
+  mysql-data:                
 
