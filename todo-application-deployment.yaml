@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: todo-application
-          image: <docker hub username>/todo-application:latest # Replace with your Docker hub repository name and tag
+          image: manaspardeshi2000/todo-application:latest # Replace with your Docker hub repository name and tag
           ports:
             - containerPort: 8081
           env:
